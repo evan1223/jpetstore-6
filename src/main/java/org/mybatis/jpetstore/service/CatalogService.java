@@ -1,5 +1,5 @@
 /*
- *    Copyright 2010-2023 the original author or authors.
+ *    Copyright 2010-2024 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -18,6 +18,9 @@ package org.mybatis.jpetstore.service;
 import java.util.ArrayList;
 import java.util.List;
 
+//log4j2 logging
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.mybatis.jpetstore.domain.Category;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.Product;
@@ -34,6 +37,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CatalogService {
 
+  private static final Logger logger = LogManager.getLogger(CatalogService.class.getName());
   private final CategoryMapper categoryMapper;
   private final ItemMapper itemMapper;
   private final ProductMapper productMapper;
@@ -42,17 +46,23 @@ public class CatalogService {
     this.categoryMapper = categoryMapper;
     this.itemMapper = itemMapper;
     this.productMapper = productMapper;
+    logger.info("CatalogService initialized with mappers.");
   }
 
   public List<Category> getCategoryList() {
-    return categoryMapper.getCategoryList();
+    logger.debug("Fetching all categories.");
+    List<Category> categories = categoryMapper.getCategoryList();
+    logger.info("Fetched {} categories.", categories.size());
+    return categories;
   }
 
   public Category getCategory(String categoryId) {
+    logger.info("Getting category with ID: {} ", categoryId);
     return categoryMapper.getCategory(categoryId);
   }
 
   public Product getProduct(String productId) {
+    logger.info("Getting product with ID: {}", productId);
     return productMapper.getProduct(productId);
   }
 
