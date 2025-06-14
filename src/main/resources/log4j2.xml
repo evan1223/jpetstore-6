@@ -20,11 +20,11 @@
 <Configuration status="INFO">
 	<Appenders>
 		<Console name="ConsoleAppender" target="SYSTEM_OUT">
-			<PatternLayout pattern="Web Log: %d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
 		</Console>
 
 		<File name="FileAppender" fileName="/usr/local/tomcat/logs/tomcat.log">
-			<PatternLayout pattern="Web Log: %d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
 		</File>
 
 	</Appenders>
